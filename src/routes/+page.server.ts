@@ -2,6 +2,7 @@ import type { PageServerLoad } from "./auth/signin/$types";
 
 export const load: PageServerLoad = async (event) => {
     return {
-        user: event.locals.user
+        user: event.locals.user,
+        profile: event.locals.profile
     };
 }

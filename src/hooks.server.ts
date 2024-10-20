@@ -6,6 +6,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (sessionCookie) {
         const sessionJSON = JSON.parse(sessionCookie) as StravaSession;
         event.locals.user = sessionJSON.athlete.username;
+        event.locals.profile = sessionJSON.athlete.profile_medium;
     }
 
     return await resolve(event);
