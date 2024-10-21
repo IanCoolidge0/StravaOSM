@@ -9,10 +9,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     let sessionJSON = JSON.parse(sessionCookie) as StravaSession;
     if (!sessionJSON || !sessionJSON.athlete) return await resolve(event);
 
-    // populate locals from Strava session, if we're logged in
-    event.locals.user = sessionJSON.athlete.username;
-    event.locals.profile = sessionJSON.athlete.profile_medium;
-
     // refresh token if expired
     if (sessionJSON.expires_at > Date.now()) {
         const refreshSession = await getStravaSession(sessionJSON.refresh_token, 'refresh_token');
@@ -24,6 +20,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 
         event.cookies.set('sessionCookie', JSON.stringify(sessionJSON), { path: '/' });
     }
+
+    // populate locals from Strava session, if we're logged in
+    event.locals.user_id = sessionJSON.athlete.id;
+    event.locals.username = sessionJSON.athlete.username;
+    event.locals.profile = sessionJSON.athlete.profile_medium;
+    event.locals.access_token = sessionJSON.access_token;
 
     return await resolve(event);
 }

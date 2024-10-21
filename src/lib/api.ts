@@ -1,5 +1,5 @@
 import { NODE_ENV, STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET } from "$env/static/private";
-import type { StravaSession } from "./types";
+import type { ActivityStats, StravaSession } from "./types";
 
 export const getStravaRedirectURI = () => {
     const prefix = (NODE_ENV === 'development') ? 'http://localhost:5173' : 'http://localhost:4173';
@@ -26,4 +26,15 @@ export const getStravaSession = async (code: string, grantType: 'authorization_c
         method: 'POST'
     });
     return await response.json() as StravaSession;
+}
+
+export const getStravaAthleteStats = async (access_token: string, athlete_id: number) => {
+    let url = `https://strava.com/api/v3/athletes/${athlete_id}/stats`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${access_token}`
+        }
+    });
+    return await response.json() as ActivityStats;
 }
