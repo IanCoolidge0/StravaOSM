@@ -4,7 +4,7 @@ export type StravaSession = {
     expires_in: number,
     refresh_token: string,
     access_token: string,
-    athlete: StravaAthlete
+    athlete?: StravaAthlete
 };
 
 export type StravaAthlete = {
