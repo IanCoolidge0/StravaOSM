@@ -49,7 +49,8 @@
         }} /> -->
         <HeatmapLayer layout={{ 'visibility': 'visible' }}
         paint={{
-            "heatmap-radius": 8,
+            "heatmap-radius": 25,
+            "heatmap-weight": 0.3,
             "heatmap-opacity": 0.6
         }} />
     </GeoJSON>
