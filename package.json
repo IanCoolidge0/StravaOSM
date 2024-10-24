@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/mapbox__polyline": "^1.0.5",
 		"svelte": "^4.2.7",
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
@@ -23,6 +24,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"arctic": "^2.0.1"
+		"@mapbox/polyline": "^1.2.1",
+		"arctic": "^2.0.1",
+		"svelte-maplibre": "^0.9.14"
 	}
 }

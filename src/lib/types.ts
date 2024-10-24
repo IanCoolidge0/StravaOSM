@@ -52,3 +52,23 @@ export type ActivityTotal = {
     elevation_gain: number,
     achievement_count: number
 };
+
+export type SummaryActivity = {
+    id: number,
+    external_id: string,
+    upload_id: string,
+    name: string,
+    distance: number,
+    moving_time: number,
+    elapsed_time: number,
+    total_elevation_gain: number,
+    elev_high: number,
+    elev_low: number,
+    map: PolylineMap
+}
+
+export type PolylineMap = {
+    id: string,
+    polyline?: string,
+    summary_polyline?: string
+}
