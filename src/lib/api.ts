@@ -40,7 +40,7 @@ export const getStravaAthleteStats = async (access_token: string, athlete_id: nu
 }
 
 export const getStravaAthleteActivities = async (access_token: string) => {
-    let url = `https://strava.com/api/v3/athlete/activities`;
+    let url = `https://strava.com/api/v3/athlete/activities?per_page=60`;
     const response = await fetch(url, {
         method: 'GET',
         headers: {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { MapLibre, LineLayer, GeoJSON } from "svelte-maplibre";
+  import { MapLibre, LineLayer, HeatmapLayer, GeoJSON } from "svelte-maplibre";
   import '../style.css';
   import { onMount } from "svelte";
   import type { MultiLineString } from "geojson";
@@ -42,10 +42,15 @@
     style="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
 >
     <GeoJSON id="line" {data}>
-        <LineLayer layout={{ 'line-cap': 'round', 'line-join': 'round' }}
+        <!-- <LineLayer layout={{ 'line-cap': 'round', 'line-join': 'round' }}
         paint={{
             'line-color': 'green',
             'line-width': 5
+        }} /> -->
+        <HeatmapLayer layout={{ 'visibility': 'visible' }}
+        paint={{
+            "heatmap-radius": 8,
+            "heatmap-opacity": 0.6
         }} />
     </GeoJSON>
 </MapLibre>
